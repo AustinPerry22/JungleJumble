@@ -18,6 +18,8 @@ function _drawActive() {
 export class JumblesController {
     constructor() {
         console.log(AppState.jumbles)
+        AppState.on('jumbles', _drawJumbles)
+        AppState.on('activeJumble', _drawActive)
         _drawJumbles()
     }
 
