@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js"
 import { jumblesService } from "../services/JumblesService.js"
 import { setHTML } from "../utils/Writer.js"
 import { getFormData } from "../utils/FormHandler.js"
+import { loadState } from "../utils/Store.js"
 
 function _drawJumbles() {
     let jumbles = AppState.jumbles
@@ -20,6 +21,7 @@ export class JumblesController {
         console.log(AppState.jumbles)
         AppState.on('jumbles', _drawJumbles)
         AppState.on('activeJumble', _drawActive)
+        loadState
         _drawJumbles()
     }
 

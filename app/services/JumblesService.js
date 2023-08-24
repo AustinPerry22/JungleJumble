@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { saveState } from "../utils/Store.js"
 
 class JumblesService {
 
@@ -6,10 +7,12 @@ class JumblesService {
 
         if (formData.input == AppState.activeJumble.body) {
             console.log('win')
+            this.endGame()
         } else {
             console.log('lose')
+            window.alert('you lose')
         }
-        this.endGame()
+
     }
 
     setActive(jumbleId) {
@@ -29,12 +32,13 @@ class JumblesService {
         console.log('end')
         AppState.activeJumble.endTime = Date.now()
         let typeTime = (AppState.activeJumble.endTime - AppState.activeJumble.startTime) / 1000
-        if (typeTime > AppState.activeJumble.fastestTime) {
+        console.log(typeTime, AppState.activeJumble.fastestTime)
+        if (typeTime < AppState.activeJumble.fastestTime) {
             AppState.activeJumble.fastestTime = typeTime
             AppState.emit('jumbles')
             AppState.emit('activeJumble')
+            saveState('jumbles', AppState.jumbles)
         }
-        console.log(AppState.activeJumble)
     }
 }
 

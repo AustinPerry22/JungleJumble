@@ -6,7 +6,7 @@ export class Jumble {
         this.name = data.name
         this.body = data.body
         // to best keep track of the fastest times you might want these properties too! They would start null cause no one has completed these yet.
-        this.fastestTime = null
+        this.fastestTime = data.fastestTime || null
         this.startTime = null
         this.endTime = null
     }
@@ -14,19 +14,17 @@ export class Jumble {
     get listTemplate() {
         return `
         <section class="row p-3 m-0">
-        <div class="col-3 p-0 m-0 bg-success-subtle">
+        <div class="col-4 p-0 m-0 bg-success-subtle">
           <div class="btn-flex-container d-flex justify-content-center">
             <!-- start crazy button -->
             <button class="btn btn-outline-info start-crazy-button" onclick="app.JumblesController.setActive('${this.id}')">START</button>
           </div>
         </div>
-        <div class="col-3 p-0 m-0 bg-success-subtle fastest-time-easy text-center fw-bold">
+        <div class="col-4 p-0 m-0 bg-success-subtle fastest-time-easy text-center fw-bold">
           ${this.name}
         </div>
         <!-- leader board for crazy -->
-        <div class="col-3 p-0 m-0 bg-success-subtle fastest-time-easy text-center fw-bold">Fastest Time ${this.fastestTime}
-        </div>
-        <div class="col-3 p-0 m-0 bg-success-subtle fastest-time-easy text-center fw-bold">BEST :keyboard::
+        <div class="col-4 p-0 m-0 bg-success-subtle fastest-time-easy text-center fw-bold">Fastest Time ${this.fastestTime}
         </div>
       </section>
         `
