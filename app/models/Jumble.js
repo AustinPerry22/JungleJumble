@@ -44,10 +44,12 @@ export class Jumble {
       </div>
       <div class="input-container d-flex flex-column align-content-center">
         <!-- JUMBLE INPUT FIELD -->
+        <form onsubmit="app.JumblesController.submitForm()">
         <textarea name="input" id="" cols="130" rows="10" class="border border-3 border-black rounded mt-3 shadow"
           id="text-area" placeholder="type what you see above here"></textarea>
         <!-- SUBMIT BUTTON -->
         <button type="submit" class="btn btn-outline-dark border-3 mt-3 shadow">Submit</button>
+        </form>
       </div>`
     }
 }
